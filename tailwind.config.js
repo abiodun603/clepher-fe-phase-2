@@ -18,7 +18,9 @@ module.exports = {
     },
     extend: {
       colors: {
+        n200: '#C5CBD3',
         n500: '#394E6A',
+        n900: '#021431',
       },
       keyframes: {
         'accordion-down': {

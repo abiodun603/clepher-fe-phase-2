@@ -22,3 +22,12 @@ body {
     /* @apply font-fontSans; */
   }
 }
+
+@layer utilities {
+  .subtitle-five {
+    @apply text-n500 font-normal text-[16px]
+  }
+  .ceter-all {
+    @apply flex items-center justify-center
+  }
+}

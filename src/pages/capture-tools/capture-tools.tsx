@@ -1,5 +1,3 @@
-// ** Libs
-import { cn } from '../../lib/utils';
 
 // ** Icon
 import { Link } from 'lucide-react';
@@ -15,10 +13,9 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { DataTable } from '../../view/capture-tools/post-management/table/data-table';
-import { columns } from '../../view/capture-tools/post-management/table/columns';
+import PostManagement from '@/view/capture-tools/post-management/PostManagement';
 
-const PostEngagements = () => {
+const CaptureTools = () => {
   return (
     <>
       <Tabs defaultValue="post" className="w-full">   
@@ -43,8 +40,8 @@ const PostEngagements = () => {
             <TabsContent value="json">USER DOCUMENTS HERE.</TabsContent>
             <TabsContent value="checkbox">BANK DETAILS HERE.</TabsContent>
             <TabsContent value="messenger">LOAN VIEW HERE.</TabsContent>
-            <TabsContent value="post">                  
-              <DataTable columns={columns} data={[]} />
+            <TabsContent value="post">  
+              <PostManagement />                
             </TabsContent>
             <TabsContent value="send">APP AND SYSTEM DETAILS HERE</TabsContent>
           </div>
@@ -54,4 +51,4 @@ const PostEngagements = () => {
   )
 }
 
-export default PostEngagements
+export default CaptureTools

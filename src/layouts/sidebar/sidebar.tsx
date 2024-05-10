@@ -13,12 +13,14 @@ import { ImMagicWand } from "react-icons/im";
 import { BiLineChart } from "react-icons/bi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { PiStack } from "react-icons/pi";
+import MenuLink from "./menu-link/menu-link";
+import { PiChartLineLight } from "react-icons/pi";
+import { ImStack } from "react-icons/im";
 
 export interface SidebarNavItemProps {
-  name: string;
+  name?: string;
   path: string;
-  icon: React.ComponentType
-}
+  icon: React.ComponentType<{ size: number, className?: string }>}
 
 export enum  RoutePath {
   DASHBOARD = "/dashboard",
@@ -32,15 +34,8 @@ export enum  RoutePath {
   SETTINGS = "/dashboard",
 }
 
-export interface Route {
-  name: string;
-  path: RoutePath;
-  SidebarNavItems: SidebarNavItemProps[]
-  component: React.ComponentType
-}
 
-
-export const defaultSidebarNavItems: SidebarNavItemProps[] = [
+const NAV_ITEMS: SidebarNavItemProps[] = [
   {
     name: "dashboard",
     path: RoutePath.DASHBOARD,
@@ -74,12 +69,12 @@ export const defaultSidebarNavItems: SidebarNavItemProps[] = [
   {
     name: "shelf",
     path: RoutePath.SHELF,
-    icon: PiStack
+    icon: ImStack
   },
   {
     name: "chart",
     path: RoutePath.CHART,
-    icon: BiLineChart
+    icon: PiChartLineLight
   },
   {
     name: "settings",
@@ -87,3 +82,21 @@ export const defaultSidebarNavItems: SidebarNavItemProps[] = [
     icon: IoSettingsOutline
   }
 ];
+
+const Sidebar =  () => {
+  return (
+    <div className="sticky top-10 h-[100dvh]">
+      <div className="mt-20 flex items-center justify-center">
+        <ul className={`list-none`}>
+          {NAV_ITEMS.map((item) => (
+            <li key={item.name} className="">
+                <MenuLink icon={item.icon} path={item.path}/>
+            </li>
+          ))}
+        </ul>  
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;

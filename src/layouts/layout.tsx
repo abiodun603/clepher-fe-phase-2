@@ -2,7 +2,8 @@ import  { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 // ** Layouts
-import Navbar from "@/layouts/navbar";
+import Navbar from "@/layouts/navbar/navbar";
+import Sidebar from "@/layouts/sidebar/sidebar";
 
 // ** CN
 import { cn } from "@/lib/utils";
@@ -13,14 +14,14 @@ export default function Root() {
 
   return (
     <>
-      <div className={cn(`bg-white border-r border-slate-200 w-[4.2rem] min-h-screen fixed left-0 top-0 transform`, {
+      <div className={cn(`bg-white border-r border-slate-200 w-[4.3rem] min-h-screen fixed left-0 top-0 transform`, {
         '-translate-x-full lg:translate-x-0' : !isSidebarOpen,
         'z-50': isSidebarOpen
       })}>
-        {/* <Sidebar setIsSidebarOpen={setIsSidebarOpen} /> */}
+        <Sidebar />
       </div>
       <div className="fixed top-0 w-[100vw]  z-50">
-        <Navbar/>
+        <Navbar  isSidebarOpen = {isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
       </div>
       <div className={cn(`w-full`,{
         'lg:pl-[4.2rem]' : isSidebarOpen,

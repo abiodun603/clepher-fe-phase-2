@@ -34,6 +34,6 @@ body {
 
   /** tab panel page layout triggers */
   .tab-trigger-text-layout {
-    @apply w-full justify-start text-n500 hover:bg-n500/10 data-[state=active]:text-n200  data-[state=active]:bg-n900 rounded-lg py-2 space-x-1.5 !important
+    @apply w-full justify-start text-n500 hover:bg-n500/10 data-[state=active]:text-n200  data-[state=active]:bg-n900 rounded-md py-2 space-x-1.5 !important
   }
 }

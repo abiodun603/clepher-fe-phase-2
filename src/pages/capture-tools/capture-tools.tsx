@@ -34,16 +34,15 @@ const CaptureTools = () => {
               </TabsList>
             </div>
           </div>
-          <div className='col-span-4 bg-white'>
-            <TabsContent value="links">
-            </TabsContent>
-            <TabsContent value="json">USER DOCUMENTS HERE.</TabsContent>
-            <TabsContent value="checkbox">BANK DETAILS HERE.</TabsContent>
-            <TabsContent value="messenger">LOAN VIEW HERE.</TabsContent>
+          <div className='col-span-4'>
+            <TabsContent value="links">Links Library</TabsContent>
+            <TabsContent value="json">JSON Generator.</TabsContent>
+            <TabsContent value="checkbox">Checkbox Plugin.</TabsContent>
+            <TabsContent value="messenger">Messenger Code.</TabsContent>
             <TabsContent value="post">  
               <PostManagement />                
             </TabsContent>
-            <TabsContent value="send">APP AND SYSTEM DETAILS HERE</TabsContent>
+            <TabsContent value="send">Send To Messenger</TabsContent>
           </div>
         </div>
       </Tabs>

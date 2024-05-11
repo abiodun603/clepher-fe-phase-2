@@ -1,21 +1,19 @@
 import { useState } from "react"
 
+//** Third Party */
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   useReactTable,
   getPaginationRowModel,
 } from "@tanstack/react-table"
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+// ** Icons
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react"
 
+// ** Component
 import {
   Table,
   TableBody,
@@ -24,8 +22,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+
 import { Button } from "@/components/ui/button"
-import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react"
+import { Input } from "@/components/ui/input"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -42,17 +41,23 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   })
-
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
+    []
+  )
   return (
     <div className="">
-      <div className="py-8 px-4 bg-white">
+      <div className="mb-3">
+        <h3 className="text-xl text-n500 -mt-2">Post Engagements</h3>
+
+      </div>
+      <div className="py-1 px-0 bg-white rounded-xl">
         <Table className="">
-          <TableHeader className="bg-n50e">
+          <TableHeader className="">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-transparent py-3">
+              <TableRow key={headerGroup.id} className="border-transparent">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className=" text-n500 text-xs font-semibold capitalize border-none py-3">
+                    <TableHead key={header.id} className="h-0 text-n500/50 text-xs font-bold capitalize border-b border-slate-100 ">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -65,12 +70,13 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="p-0"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>             
@@ -89,30 +95,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-between space-x-2 py-4">
-        <div className="w-full">
-          <div className="flex items-center space-x-2">
-            <p className="text-n500 text-sm font-normal">Showing</p>
-            <Select
-              value={`${table.getState().pagination.pageSize}`}
-              onValueChange={(value) => {
-                table.setPageSize(Number(value))
-              }}
-            >
-              <SelectTrigger className="h-8 w-[70px] border-none bg-b200/10">
-                <SelectValue placeholder={table.getState().pagination.pageSize} />
-              </SelectTrigger>
-              <SelectContent side="top">
-                {[10, 20, 30, 40, 50].map((pageSize) => (
-                  <SelectItem key={pageSize} value={`${pageSize}`}>
-                    {pageSize}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <p className="text-n500 text-sm font-normal mx-2">{`out of ${table?.getRowCount()}`}</p>
-          </div>
-        </div>
+      <div className="flex items-center justify-center space-x-2 py-4">
         <div className="flex items-center space-x-2">
           <Button
             variant="outline"
@@ -151,6 +134,22 @@ export function DataTable<TData, TValue>({
             <ChevronsRight className="h-4 w-4" />
           </Button>
         </div>
+        <div className="flex w-[100px] items-center justify-center text-sm font-medium">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()}
+        </div>
+        <span className="flex items-center gap-1">
+          Go to page:
+          <input
+            type="number"
+            defaultValue={table.getState().pagination.pageIndex + 1}
+            onChange={(e) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              table.setPageIndex(page);
+            }}
+            className="border p-1 rounded w-16 bg-transparent"
+          />
+        </span>
       </div>
     </div>
   )

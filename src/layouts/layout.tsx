@@ -7,13 +7,15 @@ import Sidebar from "@/layouts/sidebar/sidebar";
 
 // ** CN
 import { cn } from "@/lib/utils";
+import { Provider } from "react-redux";
+import store from "@/store";
 
 
 export default function Root() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <>
+    <Provider store={store}>
       <div className={cn(`bg-white border-r border-slate-200 w-[4.3rem] min-h-screen fixed left-0 top-0 transform`, {
         '-translate-x-full lg:translate-x-0' : !isSidebarOpen,
         'z-50': isSidebarOpen
@@ -31,6 +33,6 @@ export default function Root() {
          <Outlet />
         </div>
       </div>
-    </>
+    </Provider>
   )
 }

@@ -2,7 +2,7 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import { baseQuery } from '@/config/auth-config'
 
 // ** Types
-import { Post } from './type'
+import { Post } from '../../../type/type'
 
 
 export const postApi = createApi({
@@ -10,7 +10,7 @@ export const postApi = createApi({
   endpoints: (builder) => ({
     getPostEngagments: builder.query<Post[], void>({
         query: () => ({
-          url: `/91ade3f7-d911-4ecd-b49d-4c2935fc6ad4`,
+          url: `/bf6b8081-f035-4ed9-a2ac-f60cb6f1655c`,
           method: 'GET',
         }),
       }),

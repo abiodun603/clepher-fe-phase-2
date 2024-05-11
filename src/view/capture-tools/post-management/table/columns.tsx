@@ -19,6 +19,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+// ** Type
+import { Post } from "@/type/type";
+
 
 
 const ActionsCell = ({ row }: { row: any }) => {
@@ -50,18 +53,9 @@ const ActionsCell = ({ row }: { row: any }) => {
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type MemberDataTable = {
-  id?: number;
-  name: string
-  eid: string
-  email: string
-  employeeId?:string;
-  firstName?:string;
-  lastName?:string;
-  department: {name: string}
-}
 
-export const columns: ColumnDef<MemberDataTable>[] = [
+
+export const columns: ColumnDef<Post>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -72,7 +66,7 @@ export const columns: ColumnDef<MemberDataTable>[] = [
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="checkbox"
+        className="checkbox h-5 w-5"
       />
     ),
     cell: ({ row }) => (
@@ -80,7 +74,7 @@ export const columns: ColumnDef<MemberDataTable>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
-        className="checkbox"
+        className="checkbox h-5 w-5"
       />
     ),
     enableSorting: false,
@@ -90,32 +84,30 @@ export const columns: ColumnDef<MemberDataTable>[] = [
     id: "name",
     header: "Name",
     cell: ({ row }) => {
-      const employeeData = row.original
-      const firstName: string = employeeData.firstName || ""
-      const lastName: string = employeeData.lastName || ""
-
-      const fullName: string = `${firstName} ${lastName}`;
+      const postData = row.original
+      const name: string = postData.name || ""
       return <div className="flex items-center space-x-4">
-        <p>{fullName}</p>
+        <p>{name}</p>
       </div>
     },
   },
   {
-    accessorKey: "employeeId",
+    accessorKey: "engaged",
     header: "Engaged / Unique",
   },
   {
-    accessorKey: "email",
+    accessorKey: "Acquired",
     header: "Acquired",
   },
   {
-    accessorKey: "employmentStatus",
+    accessorKey: "Conversion",
     header: "Conversion",
     cell: ({ row }) => {
-      const employmentStatus: string = row.getValue("employmentStatus")
+      const postData = row.original
+      const Conversion = postData.Conversion || ""
  
       return <div className="flex items-center space-x-4">
-        <div className="flex items-center justify-center body-three text-n900  capitalize">{employmentStatus || "---"}</div>
+        <div className="flex items-center justify-center body-three text-n900  capitalize">{Conversion || "---"}</div>
       </div>
     },
   },
@@ -128,7 +120,7 @@ export const columns: ColumnDef<MemberDataTable>[] = [
       </Button>
     </div>,
     cell: ({ row }) => {
-      const employee = row.original 
+      const postData = row.original 
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -139,7 +131,7 @@ export const columns: ColumnDef<MemberDataTable>[] = [
           <DropdownMenuContent align="end" className="bg-white">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link to={`/dashboard/employees/details/${employee?.id}`}>
+            <Link to={`/dashboard/employees/details/${postData?._id}`}>
               <DropdownMenuItem >Edit</DropdownMenuItem>
             </Link>
             <DropdownMenuItem>Delete</DropdownMenuItem>

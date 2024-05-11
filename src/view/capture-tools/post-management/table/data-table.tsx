@@ -6,12 +6,15 @@ import {
   ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   useReactTable,
   getPaginationRowModel,
+
 } from "@tanstack/react-table"
 
 // ** Icons
-import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react"
+import { ChevronLeftIcon, Search, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react"
+import { IoMdArrowDropdown } from "react-icons/io";
 
 // ** Component
 import {
@@ -22,7 +25,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -35,20 +37,47 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      columnFilters,
+    },
   })
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    []
-  )
+
   return (
     <div className="">
-      <div className="mb-3">
+      <div className="mb-3 flex items-center justify-between">
         <h3 className="text-xl text-n500 -mt-2">Post Engagements</h3>
-
+        <div className="flex items-center space-x-3">
+          <div className="relative w-[240px]">
+            <Input
+              placeholder="Search..."
+              value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+              onChange={(event) =>
+                table.getColumn("name")?.setFilterValue(event.target.value)
+              }
+              className="max-w-sm h-9 border border-n500"
+            />
+            <Search size={18} className="text-n500 absolute right-3 top-2 " />
+          </div>
+          <div className="dropdown dropdown-end">
+            <Button variant={"outline"} className="flex items-center border border-n500 bg-transparent h-9 ">
+              <span>Bulk Action</span>
+              <IoMdArrowDropdown size={20} />
+            </Button>
+            <ul className="p-3 mt-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <li className="text-left text-n500">Delete</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div className="py-1 px-0 bg-white rounded-xl">
         <Table className="">

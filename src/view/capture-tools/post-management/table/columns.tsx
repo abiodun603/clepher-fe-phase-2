@@ -82,6 +82,7 @@ export const columns: ColumnDef<Post>[] = [
   },
   {
     id: "name",
+    accessorKey: "name",
     header: "Name",
     cell: ({ row }) => {
       const postData = row.original

@@ -17,6 +17,41 @@ body {
   min-height: 100vh;
 }
 
+.tab {
+  position: relative;
+  grid-row-start: 1;
+  display: inline-flex;
+  height: 3.5rem;
+  appearance: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  line-height: 2;
+  font-weight: 400;
+}
+
+.tabs-boxed > .tab{
+  border-color: "#D3D4D7";
+  border-bottom-width: 1px;
+}
+
+.tabs-boxed :is(.tab-active, [aria-selected="true"]):not(.tab-disabled):not([disabled]),
+.tabs-boxed :is(input:checked) {
+ padding: 0;
+ margin: 0;
+ border-radius: 0;
+ background-color: #0069FF;
+ border: none;
+}
+
+.tabs-bordered > .tab {
+  border-bottom-width: 1px;
+}
+
+
 @layer base {
   body {
     /* @apply font-fontSans; */

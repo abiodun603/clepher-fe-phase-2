@@ -14,8 +14,7 @@ import {
 
 // ** Icons
 import { ChevronLeftIcon, Search, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react"
-import { IoMdArrowDropdown } from "react-icons/io";
-
+import { IoMdArrowDropdown, IoMdFastforward } from "react-icons/io";
 // ** Component
 import {
   Table,
@@ -105,10 +104,10 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="p-0"
+                  className=""
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>             
+                    <TableCell key={cell.id} className="py-2">             
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
@@ -128,47 +127,46 @@ export function DataTable<TData, TValue>({
         <div className="flex items-center space-x-2">
           <Button
             variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex"
+            className="hidden h-8 w-8 p-0 lg:flex rounded-full bg-b300 disabled:opacity-50 group disabled:bg-n100 dark:disabled:bg-n100 hover:bg-blue-700"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Go to first page</span>
-            <ChevronsLeft className="h-4 w-4" />
+            <IoMdFastforward  className="rotate-180 h-4 w-4 text-n300 disabled:text-n500 group-disabled:text-n500/70" />
           </Button>
           <Button
             variant="outline"
-            className="h-8 w-8 p-0"
+            className="h-8 w-8 p-0 rounded-full bg-b300 disabled:bg-n100 hover:bg-blue-700 group"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Go to previous page</span>
-            <ChevronLeftIcon className="h-4 w-4" />
+            <ChevronLeftIcon className="h-4 w-4 text-n300 group-disabled:text-n500/70" /> 
           </Button>
           <Button
             variant="outline"
-            className="h-8 w-8 p-0"
+            className="h-8 w-8 p-0 rounded-full bg-b300 disabled:bg-n100 hover:bg-blue-700 group"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">Go to next page</span>
-            <ChevronRightIcon className="h-4 w-4" />
+            <ChevronRightIcon className="h-4 w-4 text-n300 group-disabled:text-n500/70" />
           </Button>
           <Button
             variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex"
+            className="hidden h-8 w-8 p-0 lg:flex rounded-full bg-b300 disabled:bg-n100 hover:bg-blue-700 group"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
             <span className="sr-only">Go to last page</span>
-            <ChevronsRight className="h-4 w-4" />
+            <IoMdFastforward className="h-4 w-4 text-n300 group-disabled:text-n500/70" />
           </Button>
         </div>
-        <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
-          {table.getPageCount()}
+        <div className="flex space-x-1 w-[100px] items-center justify-center text-sm font-medium">
+          <span>Page</span> <span className="font-bold">{" "}{table.getState().pagination.pageIndex + 1}</span> <span> of </span>{" "}<p className="font-bold">{`${" "} ${table.getPageCount()}`}</p> 
         </div>
         <span className="flex items-center gap-1">
-          Go to page:
+          <span className="-mt-2">.</span> Go to page:
           <input
             type="number"
             defaultValue={table.getState().pagination.pageIndex + 1}
@@ -176,7 +174,7 @@ export function DataTable<TData, TValue>({
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
-            className="border p-1 rounded w-16 bg-transparent"
+            className="border p-1 rounded-md w-16 bg-white"
           />
         </span>
       </div>

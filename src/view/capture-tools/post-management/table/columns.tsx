@@ -82,12 +82,19 @@ export const columns: ColumnDef<Post>[] = [
   },
   {
     id: "name",
-    accessorKey: "name",
+    accessorKey: "engaged",
     header: "Name",
     cell: ({ row }) => {
       const postData = row.original
       const name: string = postData.name || ""
+      const image = postData.image || ""
       return <div className="flex items-center space-x-4">
+        <img 
+          src={image}
+          alt={name}
+          width={18}
+          height={18}
+     />
         <p>{name}</p>
       </div>
     },
@@ -103,41 +110,32 @@ export const columns: ColumnDef<Post>[] = [
   {
     accessorKey: "Conversion",
     header: "Conversion",
-    cell: ({ row }) => {
-      const postData = row.original
-      const Conversion = postData.Conversion || ""
+    // cell: ({ row }) => {
+    //   const postData = row.original
+    //   const Conversion = postData.Conversion || ""
  
-      return <div className="flex items-center space-x-4">
-        <div className="flex items-center justify-center body-three text-n900  capitalize">{Conversion || "---"}</div>
-      </div>
-    },
+    //   return <div className="flex items-center space-x-4">
+    //     <div className="flex items-center justify-center body-three text-n900  capitalize">{Conversion || "---"}</div>
+    //   </div>
+    // },
   },
   {
     id: "actions",
-    header: () => <div className="">
-      <Button variant="ghost" className="h-8 w-8 p-0">
-        <span className="sr-only">Open menu</span>
-        <CgMoreVertical className="h-4 w-4  text-xl text-n700"  size={60}/>
-      </Button>
-    </div>,
+    header: "Action",
     cell: ({ row }) => {
-      const postData = row.original 
+      const id = row.original._id
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Action</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="bg-white">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <Link to={`/dashboard/employees/details/${postData?._id}`}>
-              <DropdownMenuItem >Edit</DropdownMenuItem>
-            </Link>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="dropdown dropdown-end">
+          <Button variant="outline" className="h-6 border border-n500 ">
+            <span className="text-n500">Action</span>
+          </Button>
+          <ul className="dropdown-content z-[1] menu p-2 shadow text-n500
+           rounded-box w-24 bg-white">
+            <li><Link to={`/capture-tools/post-engagements/${id}/edit`} className="text-n500">Edit</Link></li>
+            <li><a className="text-n500">Rename</a></li>
+            <li><a className="text-n500">Delete</a></li>
+          </ul>
+        </div>
       )
     },
   },

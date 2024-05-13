@@ -7,12 +7,12 @@ const EditPostManagements = () => {
   const { pathname } = useLocation()
 
   return (
-    <>
+    <div className='px-4'>
       <div className='mb-4 flex flex-row items-center justify-between'>
         <Breadcrumbs url={pathname} />
         <Button className='' variant={"primary"}>Save</Button>
       </div>
-      <div className="grid grid-cols-5 w-full h-[80vh] bg-white shadow-sm rounded-xl">
+      <div className="flex flex-col space-y-10 md:space-y-0 md:grid md:grid-cols-5 w-full h-full md:h-[80vh] bg-white shadow-sm rounded-xl">
           <div className='col-span-2'>
             <div role="tablist" className="tabs ">
               <div className='w-full grid grid-cols-2 tabs-bordered h-full'>
@@ -39,7 +39,7 @@ const EditPostManagements = () => {
           </div>
       </div>
 
-    </>
+    </div>
   )
 }
 

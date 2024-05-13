@@ -13,10 +13,10 @@ import store from "@/store";
 
 export default function Root() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  
   return (
     <Provider store={store}>
-      <div className={cn(`bg-white border-r border-slate-200 w-[4.3rem] min-h-screen fixed left-0 top-0 transform`, {
+      <div className={cn(`bg-white border-r border-slate-200 w-[4.3rem] z-50 min-h-screen fixed left-0 top-0 transform`, {
         '-translate-x-full lg:translate-x-0' : !isSidebarOpen,
         'z-50': isSidebarOpen
       })}>

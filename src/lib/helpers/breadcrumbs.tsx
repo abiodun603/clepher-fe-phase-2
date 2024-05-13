@@ -22,13 +22,13 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ url }) => {
   };
 
   return (
-    <div className="breadcrumbs flex flex-row items-center space-x-1">
+    <div className="breadcrumbs flex flex-row items-center space-x-0 md:space-x-1">
       {segments.map((segment, index) => (
         <React.Fragment key={index}>
           {/* Render the segment only if it's not an ID */}
           {!isIDSegment(segment) && (
             <>
-              <Link to={`#`} className='disabled text-lg text-n500 font-normal capitalize hover:text-n500'>
+              <Link to={`#`} className='disabled text-sm md:text-lg text-n500 font-normal capitalize hover:text-n500'>
                 {segment}
               </Link>
               {index < segments.length - 1 && <ChevronRight size={14} className=' text-xs text-n200' />}

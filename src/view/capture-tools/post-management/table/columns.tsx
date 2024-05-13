@@ -3,56 +3,13 @@ import {  Link } from "react-router-dom";
 
 import { ColumnDef } from "@tanstack/react-table"
 
-
-// ** Icon
-import { CgMoreVertical } from "react-icons/cg";
-
 // ** Component
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
 
 // ** Type
 import { Post } from "@/type/type";
-
-
-
-const ActionsCell = ({ row }: { row: any }) => {
-  const employee = row.original;
-  // const { handleDelete } = useEmployeeDeletion();
-
-  return (
-    <DropdownMenu>
-      {/* DropdownMenuTrigger component */}
-      <DropdownMenuTrigger asChild>
-            <div className="h-8 w-8 ">
-              <span className="sr-only">Open menu</span>
-              <CgMoreVertical className="h-4 w-4 text-2xl text-black" color='#000000'  size={80} />
-            </div>
-          </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="bg-white">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <Link to={`/dashboard/employees/details/${employee?.id}`}>
-          <DropdownMenuItem >Edit</DropdownMenuItem>
-        </Link>
-        <DropdownMenuItem onClick={() => null }>Delete</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-};
-
-
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 
 
 export const columns: ColumnDef<Post>[] = [

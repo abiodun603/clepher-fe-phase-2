@@ -13,7 +13,7 @@ import {
 } from "@tanstack/react-table"
 
 // ** Icons
-import { ChevronLeftIcon, Search, ChevronRightIcon, ChevronsLeft, ChevronsRight } from "lucide-react"
+import { ChevronLeftIcon, Search, ChevronRightIcon } from "lucide-react"
 import { IoMdArrowDropdown, IoMdFastforward } from "react-icons/io";
 // ** Component
 import {

@@ -1,4 +1,33 @@
-[
+export const REACTIONS = [
+  {
+    name: "like",
+    image_url: "https://cdn.worldvectorlogo.com/logos/facebook-reaction-like.svg"
+  },
+  {
+    name: "love",
+    image_url: "https://cdn.worldvectorlogo.com/logos/facebook-reaction-love.svg"
+  },
+  {
+    name: "haha",
+    image_url: "https://cdn.worldvectorlogo.com/logos/facebook-reaction-haha.svg"
+  },
+  {
+    name: "wow",
+    image_url: "https://cdn.worldvectorlogo.com/logos/facebook-reaction-wow.svg",
+  },
+  {
+    name: "sad",
+    image_url: "https://cdn.worldvectorlogo.com/logos/facebook-reaction-sad.svg",
+  },
+  {
+    name: "angry",
+    image_url: "https://cdn.iconscout.com/icon/free/png-256/free-angry-2387661-1991061.png?f=webp"
+  }
+]
+
+
+
+export const mock = [
   {
     "_id": 62372,
     "name": "Metrics",

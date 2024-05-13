@@ -14,7 +14,7 @@ import CaptureTools from './pages/capture-tools/capture-tools.tsx'
 // ** Store
 import { Provider } from 'react-redux'
 import store from './store/index.ts'
-import EditPostManagements from './pages/capture-tools/components/EditPostManagements.tsx'
+import EditPostManagements from './pages/capture-tools/edit-post-management.tsx'
 
 
 const router = createBrowserRouter([

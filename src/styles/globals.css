@@ -45,6 +45,7 @@ body {
  border-radius: 0;
  background-color: #0069FF;
  border: none;
+ color: #CEE4FF;
 }
 
 .tabs-bordered > .tab {
@@ -70,5 +71,9 @@ body {
   /** tab panel page layout triggers */
   .tab-trigger-text-layout {
     @apply w-full justify-start text-n500 hover:bg-n500/10 data-[state=active]:text-n200  data-[state=active]:bg-n900 rounded-md py-2 space-x-1.5 !important
+  }
+
+  .reaction-li {
+    @apply bg-["https://static.xx.fbcdn.net/rsrc.php/v2/yh/r/sqhTN9lgaYm.png"] bg-cover w-12 h-12 inline-block
   }
 }

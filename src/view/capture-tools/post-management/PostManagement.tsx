@@ -9,11 +9,11 @@ const PostManagement = () => {
 
   if(isLoadingPostEngagement) return null
   return (
-    <>
+    <div className='w-full overflow-x-scroll'>
     {
       getPostEngagement && <DataTable columns={columns} data={getPostEngagement} />
     }
-    </>
+    </div>
   )
 }
 

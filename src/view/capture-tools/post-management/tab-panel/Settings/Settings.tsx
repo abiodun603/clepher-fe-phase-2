@@ -34,20 +34,20 @@ const Settings = () => {
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text text-n500/60">Enable To Privately Reply To First-Level Comments Only</span> 
-            <input type="checkbox" className="toggle"  />
+            <input type="checkbox" className="toggle border-n400"  />
           </label>
         </div>
         <div className="form-control -mt-3">
           <label className="label cursor-pointer">
             <span className="label-text text-n500/60">Send Message To The Same User Only Once Per Post</span> 
-            <input type="checkbox" className="toggle"  />
+            <input type="checkbox" className="toggle border border-n400"  />
           </label>
         </div>
       </div>
 
       {/*  */}
       <div className="mt-4">
-        <span className="w-full text-sm">
+        <span className="w-full text-sm font-normal text-n500">
           Require a Post Reaction
         </span>
         <hr />

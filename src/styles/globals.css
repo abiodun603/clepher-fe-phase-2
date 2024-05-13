@@ -51,6 +51,10 @@ body {
 .tabs-bordered > .tab {
   border-bottom-width: 1px;
 }
+/* 
+.toggle{
+  border: unset !important;
+} */
 
 
 @layer base {

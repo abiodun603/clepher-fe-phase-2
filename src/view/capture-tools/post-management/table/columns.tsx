@@ -126,14 +126,14 @@ export const columns: ColumnDef<Post>[] = [
       const id = row.original._id
       return (
         <div className="dropdown dropdown-end">
-          <Button variant="outline" className="h-6 border border-n500 ">
-            <span className="text-n500">Action</span>
+          <Button variant="outline" className="h-6 border border-n500 hover:bg-n500 hover:text-white">
+            Action
           </Button>
-          <ul className="dropdown-content z-[1] menu p-2 shadow text-n500
+          <ul className="dropdown-content z-[1] menu p-2 shadow text-xs
            rounded-box w-24 bg-white">
-            <li><Link to={`/capture-tools/post-engagements/${id}/edit`} className="text-n500">Edit</Link></li>
-            <li><a className="text-n500">Rename</a></li>
-            <li><a className="text-n500">Delete</a></li>
+            <li><Link to={`/capture-tools/post-engagements/${id}/edit`} className="text-n500 hover:text-n500 ">Edit</Link></li>
+            <li><a className="text-n500 hover:text-n500 ">Rename</a></li>
+            <li><a className="text-n500 hover:text-n500 ">Delete</a></li>
           </ul>
         </div>
       )

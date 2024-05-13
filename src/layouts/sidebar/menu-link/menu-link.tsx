@@ -15,11 +15,11 @@ const MenuLink = ({ icon: Icon, path  }: SidebarNavItemProps) => {
   return (
     <Link
       to={path}
-      className={cn(`h-[52px] w-[52px] text-n500 flex items-center justify-center hover:bg-p100 hover:bg-n500/20 hover:rounded-md`, {
-        'text-n200  bg-n900 rounded-md' : sanitizedPathname === path ,
+      className={cn(`group h-[52px] w-[52px] text-n500 hover-n500 flex items-center justify-center hover:bg-p100 hover:bg-n500/20 hover:rounded-md`, {
+        'text-n200  bg-n900  rounded-md' : sanitizedPathname === path ,
       })}
     >
-      <Icon size={21} className=' ' />
+      <Icon size={21} className='group-hover:text-n500' />
     </Link>
   );
 };

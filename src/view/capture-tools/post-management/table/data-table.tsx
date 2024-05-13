@@ -56,14 +56,14 @@ export function DataTable<TData, TValue>({
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-xl text-n500 -mt-2">Post Engagements</h3>
         <div className="flex items-center space-x-3">
-          <div className="relative w-[240px]">
+          <div className="relative hidden md:block md:w-[240px]">
             <Input
               placeholder="Search..."
               value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
               onChange={(event) =>
                 table.getColumn("name")?.setFilterValue(event.target.value)
               }
-              className="max-w-sm h-9 border border-n500"
+              className="max-w-sm h-9 border border-n500 focus-visible:ring-0"
             />
             <Search size={18} className="text-n500 absolute right-3 top-2 " />
           </div>
@@ -78,8 +78,8 @@ export function DataTable<TData, TValue>({
           </div>
         </div>
       </div>
-      <div className="py-1 px-0 bg-white rounded-xl">
-        <Table className="">
+      <div className="py-1 px-0 bg-white rounded-xl overflow-x-scroll w-full">
+        <Table className="overflow-x-scroll">
           <TableHeader className="">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="border-transparent">
@@ -174,7 +174,7 @@ export function DataTable<TData, TValue>({
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
-            className="border p-1 rounded-md w-16 bg-white"
+            className="border p-1 rounded-md w-16 bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-inset"
           />
         </span>
       </div>

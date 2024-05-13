@@ -1,9 +1,10 @@
 import { Dispatch, FC, SetStateAction } from 'react'
 
 // ** Icons
-import { LifeBuoy } from 'lucide-react';
+import { LifeBuoy, Menu } from 'lucide-react';
 import { BsShieldExclamation } from "react-icons/bs";
 import { FiMoon } from "react-icons/fi";
+
 // Assets
 import { Assets } from "../../assets"
 
@@ -35,7 +36,7 @@ const Navbar: FC<NavbarProps> = ({isSidebarOpen, setIsSidebarOpen}) => {
   return (
     <div className="h-[70px] flex items-center justify-between pl-4 pr-3  border-b border-slate-200 z-50 bg-white">
       <div className="md:w-[25rem] flex items-center justify-start space-x-4">
-        {/* <Menu className="text-black md:hidden -mt-1" size={30} onClick={handleSidebarToggle} /> */}
+        <Menu className="text-black md:hidden -mt-1" size={30} onClick={handleSidebarToggle} />
         <Avatar className="w-10 h-10 cursor-pointer">
           <AvatarImage src={Assets.ituneProfileImage}  />
           <AvatarFallback>IT</AvatarFallback>
@@ -47,7 +48,6 @@ const Navbar: FC<NavbarProps> = ({isSidebarOpen, setIsSidebarOpen}) => {
     
       <div className="w-full flex items-center justify-end">
         <div className="flex items-center gap-5">
-
           <div className="flex items-center">
             <div className="center-all p-3.5  hover:bg-[#E58B8B] hover:rounded-full">
               <BsShieldExclamation size={20} className='text-n500'/>

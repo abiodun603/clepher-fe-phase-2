@@ -29,7 +29,7 @@ export default function Root() {
         'lg:pl-[4.2rem]' : isSidebarOpen,
         " lg:pl-[4.2rem] p-0" : !isSidebarOpen
       } )}>
-        <div className="w-full bg-[#F2F7FE] min-h-screen pt-24 pb-16 md:px-8">
+        <div className="w-full bg-[#F2F7FE] min-h-screen pt-20 pb-16 md:px-8">
          <Outlet />
         </div>
       </div>

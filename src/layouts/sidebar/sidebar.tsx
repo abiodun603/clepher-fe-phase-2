@@ -29,9 +29,9 @@ export enum  RoutePath {
   CAPTURE_TOOLS = "/capture-tools",
   BROADCASTS = "/broadcasts",
   AUTOMATION = "/automation",
-  SHELF = "/dashboard",
-  CHART = "/dashboard",
-  SETTINGS = "/dashboard",
+  SHELF = "/shelf",
+  CHART = "/chart",
+  SETTINGS = "/settings",
 }
 
 

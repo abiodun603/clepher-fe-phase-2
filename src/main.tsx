@@ -10,10 +10,9 @@ import './styles/globals.css'
 
 // ** Page
 import CaptureTools from './pages/capture-tools/capture-tools.tsx'
+import Dashboard from './pages/dashboard/dashboard.tsx'
 
 // ** Store
-import { Provider } from 'react-redux'
-import store from './store/index.ts'
 import EditPostManagements from './pages/capture-tools/edit-post-management.tsx'
 
 
@@ -23,12 +22,44 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
+        path: "/dashboard",
+        element: <Dashboard />
+      },
+      {
+        path: "/audience",
+        element: <Dashboard />
+      },
+      {
+        path: "/chat",
+        element: <Dashboard />
+      },
+      {
+        path: "/broadcasts",
+        element: <Dashboard />
+      },
+      {
+        path: "/automation",
+        element: <Dashboard />
+      },
+      {
+        path: "/shelf",
+        element: <Dashboard />
+      },
+      {
+        path: "/chart",
+        element: <Dashboard />
+      },
+      {
         path: "capture-tools",
         element: <CaptureTools />,
       },
       {
         path: "capture-tools/post-engagements/:id/edit",
         element: <EditPostManagements />,
+      },
+      {
+        path: "/settings",
+        element: <Dashboard />
       },
     ],
   },
